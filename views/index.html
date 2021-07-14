@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="icon" type="image/x-icon" href="assets/images/servicenext.png" /> -->
+    <title>ServiceNext</title>
+</head>
+
+<body id="snx-body">
+    <script src="/assets/js/concat.js"></script>
+    <script>
+        window.onload = function () { 
+            let routeUrl = window.location.pathname;
+            const urlParams = new URLSearchParams(window.location.search);
+            const myParam = urlParams.get('customer_id');
+            const userName = urlParams.get('customer_name')
+            let url = routeUrl.split('/');            
+            let botName = url[url.length-2];
+            let botid = url[url.length-1]
+            let bodyBg = document.getElementById('snx-body')
+            bodyBg.style.backgroundRepeat = 'no-repeat';
+            bodyBg.style.backgroundSize = 'cover';
+            servicenext.webchat_init(botName, botid, myParam , userName);
+        }
+    </script>
+</body>
+
+</html>
